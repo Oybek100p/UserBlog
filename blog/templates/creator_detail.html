@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ creator.name }} {{ creator.surname }}</h2>
+<img src="{{ creator.image.url }}" style="max-width:300px;" class="mb-3">
+<p><b>Age:</b> {{ creator.age }}</p>
+<p><b>Country:</b> {{ creator.country }}</p>
+<p><b>Bio:</b> {{ creator.bio }}</p>
+<a href="{% url 'creator_update' creator.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'creator_delete' creator.pk %}" class="btn btn-danger">Delete</a>
+{% endblock %}
+

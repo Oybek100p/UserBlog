@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ post.title }}</h2>
+<img src="{{ post.image.url }}" style="max-width:400px;" class="mb-3">
+<p>{{ post.text }}</p>
+<p><b>Author:</b> {{ post.author.name }} {{ post.author.surname }}</p>
+<p><b>Country:</b> {{ post.country }}</p>
+<p><b>Hashtags:</b> {{ post.hashtags }}</p>
+{% if post.video %}
+  <p><a href="{{ post.video }}" target="_blank">Watch Video</a></p>
+{% endif %}
+<a href="{% url 'post_update' post.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Delete</a>
+{% endblock %}
+

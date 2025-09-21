@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Posts</h2>
+<a class="btn btn-success mb-3" href="{% url 'post_create' %}">+ Add Post</a>
+<div class="row">
+  {% for post in posts %}
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <img src="{{ post.image.url }}" class="card-img-top" style="height:250px;object-fit:cover;">
+        <div class="card-body">
+          <h5>{{ post.title  }}</h5>
+          <h4>{{post.author}}</h4>
+          <p>{{ post.text|truncatechars:100 }}</p>
+          <p>{{ post.add_date}}</p>
+          <a class="btn btn-primary" href="{% url 'post_detail' post.pk %}">Read More</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No posts yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

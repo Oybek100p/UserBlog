@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Creators</h2>
+<a class="btn btn-success mb-3" href="{% url 'creator_create' %}">+ Add Creator</a>
+<div class="row">
+  {% for creator in creators %}
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <img src="{{ creator.image.url }}" class="card-img-top" style="height:250px;object-fit:cover;">
+        <div class="card-body">
+          <h5>{{ creator.name }} {{ creator.surname }}</h5>
+          <p>{{ creator.bio|truncatechars:100 }}</p>
+          <a class="btn btn-primary" href="{% url 'creator_detail' creator.pk %}">Read More</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No creators yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}
